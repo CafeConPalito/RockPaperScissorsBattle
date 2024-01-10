@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class GameObjectMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject target;
 
-    // Update is called once per frame
-    void Update()
+    private bool target_acquired;
+
+    private void Update()
     {
-        
+        transform.position=Vector2.Lerp(this.transform.position, target.transform.position, Time.deltaTime);
     }
 }
