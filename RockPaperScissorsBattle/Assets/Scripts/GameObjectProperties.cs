@@ -23,19 +23,21 @@ public class GameObjectProperties : MonoBehaviour
         switch (type)
         {
             case 2:
-                print("2 - TIJERA");
                 this.GetComponentInChildren<SpriteRenderer>().sprite = sprite[type];
                 this.name = this.sprite[type].name;
+                this.tag = this.sprite[type].name;
                 break;
             case 1:
-                print("1 - PAPEL");
+               
                 this.GetComponentInChildren<SpriteRenderer>().sprite = sprite[type];
                 this.name = this.sprite[type].name;
+                this.tag = this.sprite[type].name;
                 break;
             case 0:
-                print("0 - PIEDRA");
+                
                 this.GetComponentInChildren<SpriteRenderer>().sprite = sprite[type];
                 this.name = this.sprite[type].name;
+                this.tag = this.sprite[type].name;
                 break;
             default:
                 print("ERROR VALUE TYPE INCORRECT");

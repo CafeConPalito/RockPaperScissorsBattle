@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < numbergameobjects; i++)
         {
 
-            gameObjects[i]=Instantiate(prefab, new Vector3(Random.Range(-8.0f,4.9f), Random.Range(-4.0f, 4.9f), 0), Quaternion.identity);
+            gameObjects[i]=Instantiate(prefab, new Vector3(Random.Range(-8.5f,8.5f), Random.Range(-4.5f, 4.5f), 0), Quaternion.identity);
 
             if (tramo>contador)
             {
