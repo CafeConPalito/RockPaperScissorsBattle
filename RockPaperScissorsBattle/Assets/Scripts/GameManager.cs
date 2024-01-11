@@ -4,37 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //PATRON SINGLETON
-    private static GameManager _instance;
+    // Instancia estática para el acceso global
+    public static GameManager Instance { get; private set; }
+    public GameObject[] GameObjects { get => gameObjects; set => gameObjects = value; }
 
-    public static GameManager Instance
-    {
-        get
-        {
-       
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<GameManager>();
-            }
-          
-            return _instance;
-        }
-    }
-   
     private void Awake()
     {
-       
-        if (_instance == null)
+        // Comprueba si la instancia ya existe
+        if (Instance == null)
         {
-            _instance = this;
+            // Si no, establece la instancia a esta
+            Instance = this;
         }
-        
-        else if (_instance != this)
+        else if (Instance != this)
         {
+            // Si la instancia ya existe y no es esta, destruye este objeto para mantener un Singleton
             Destroy(gameObject);
         }
 
-       
+        // No destruye este objeto cuando se recarga la escena
         DontDestroyOnLoad(gameObject);
     }
 
@@ -53,13 +41,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameObjects = new GameObject[numbergameobjects];
+        GameObjects = new GameObject[numbergameobjects];
         tramo = numbergameobjects / 3;
 
         for (int i = 0; i < numbergameobjects; i++)
         {
 
-            gameObjects[i]=Instantiate(prefab, new Vector3(Random.Range(-8.5f,8.5f), Random.Range(-4.5f, 4.5f), 0), Quaternion.identity);
+            GameObjects[i]=Instantiate(prefab, new Vector3(Random.Range(-8.5f,8.5f), Random.Range(-4.5f, 4.5f), 0), Quaternion.identity);
 
             if (tramo>contador)
             {
@@ -71,7 +59,7 @@ public class GameManager : MonoBehaviour
                 type++;
             }
 
-            gameObjects[i].GetComponentInChildren<GameObjectProperties>().Type = type;
+            GameObjects[i].GetComponentInChildren<GameObjectProperties>().Type = type;
 
         }
     }
