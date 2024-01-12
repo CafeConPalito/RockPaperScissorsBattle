@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     // Instancia estática para el acceso global
     public static GameManager Instance { get; private set; }
-    public GameObject[] GameObjects { get => gameObjects; set => gameObjects = value; }
+    public List<GameObject> GameObjects { get => gameObjects; set => gameObjects = value; }
 
     private void Awake()
     {
@@ -27,21 +27,31 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField]
-    private GameObject[] gameObjects = null;
+    private List<GameObject> gameObjects = new List<GameObject>();
 
     [SerializeField]
     private GameObject prefab;
+    
+    //[SerializeField]
+    //private int numbergameobjects;
 
     [SerializeField]
-    private int numbergameobjects;
+    private int numberrock=1;
+    [SerializeField]
+    private int numberpaper=1;
+    [SerializeField]
+    private int numberscissors = 1;
+    
 
-    private int tramo;
-    private int contador = 0;
-    private int type = 0;
+    //private int tramo;
+    //private int contador = 0;
+    //private int type = 0;
 
     private void Start()
     {
-        GameObjects = new GameObject[numbergameobjects];
+
+        //INSTANCIAR OBJETOS A PARTES IGUALES
+        /*
         tramo = numbergameobjects / 3;
 
         for (int i = 0; i < numbergameobjects; i++)
@@ -61,7 +71,30 @@ public class GameManager : MonoBehaviour
 
             GameObjects[i].GetComponentInChildren<GameObjectProperties>().Type = type;
 
+        }*/
+
+        for (int i = 0; i < numberrock; i++)
+        {
+            GameObject go;
+            go = Instantiate(prefab, new Vector3(Random.Range(-8.5f, 8.5f), Random.Range(-4.5f, 4.5f), 0), Quaternion.identity);
+            go.GetComponentInChildren<GameObjectProperties>().Type = 0;
+            gameObjects.Add(go);
         }
+        for (int i = 0; i < numberpaper; i++)
+        {
+            GameObject go;
+            go = Instantiate(prefab, new Vector3(Random.Range(-8.5f, 8.5f), Random.Range(-4.5f, 4.5f), 0), Quaternion.identity);
+            go.GetComponentInChildren<GameObjectProperties>().Type = 1;
+            gameObjects.Add(go);
+        }
+        for (int i = 0; i < numberscissors; i++)
+        {
+            GameObject go;
+            go = Instantiate(prefab, new Vector3(Random.Range(-8.5f, 8.5f), Random.Range(-4.5f, 4.5f), 0), Quaternion.identity);
+            go.GetComponentInChildren<GameObjectProperties>().Type = 2;
+            gameObjects.Add(go);
+        }
+
     }
 
 }

@@ -154,7 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObjects: []
   prefab: {fileID: 1922707106459451332, guid: cfde62eb41f0aea4cb0e2101abc77ff8, type: 3}
-  numbergameobjects: 20
+  numberrock: 1
+  numberpaper: 10
+  numberscissors: 1
 --- !u!4 &414451850
 Transform:
   m_ObjectHideFlags: 0

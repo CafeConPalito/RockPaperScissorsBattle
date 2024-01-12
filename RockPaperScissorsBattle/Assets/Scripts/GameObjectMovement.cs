@@ -12,7 +12,7 @@ public class GameObjectMovement : MonoBehaviour
 
     private GameManager gameManager = GameManager.Instance;
 
-    private GameObject[] gameObjects = null;
+    private List<GameObject> gameObjects = null;
 
     public bool Target_acquired { get => target_acquired; set => target_acquired = value; }
     public GameObject Target { get => target; set => target = value; }
