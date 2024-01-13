@@ -17,6 +17,11 @@ public class GameObjectMovement : MonoBehaviour
     public bool Target_acquired { get => target_acquired; set => target_acquired = value; }
     public GameObject Target { get => target; set => target = value; }
 
+    private void Start()
+    {
+        gameObjects = gameManager.GameObjects;
+    }
+
     private void Update()
     {
         if (Target_acquired)
@@ -44,7 +49,7 @@ public class GameObjectMovement : MonoBehaviour
             else
             {
 
-                transform.position = Vector2.Lerp(this.transform.position, Target.transform.position, Time.deltaTime);
+                transform.position = Vector2.Lerp(this.transform.position, Target.transform.position, 0.8f*Time.deltaTime);
             }
 
         }
@@ -57,7 +62,6 @@ public class GameObjectMovement : MonoBehaviour
 
     private void acquired_target()
     {
-        gameObjects = gameManager.GameObjects;
         double distancia=100;
         double distancia2 = 0;
         foreach (GameObject obj in gameObjects)
